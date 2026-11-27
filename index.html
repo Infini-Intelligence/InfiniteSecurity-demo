@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try {
+      const savedScheme = localStorage.getItem("color-scheme");
+      if (savedScheme === "light" || savedScheme === "dark") {
+        document.querySelector('meta[name="color-scheme"]').content = savedScheme;
+      }
+    } catch (_) {}
+  </script>
+  <title>InfiniteSecurity — Live Custody Change Assurance &amp; Pre-Signing Verifier Demo</title>
+  <meta name="description" content="Interactive product demo of InfiniteSecurity: inspect real pull-request diffs, run the cross-system digital twin CLI, trace 6-lane paths to vault funds, and decode raw hardware-wallet calldata.">
+  <link rel="preload" href="./assets/fonts/bricolage-grotesque-latin-500-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/jetbrains-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f1326'/%3E%3Crect x='5' y='6' width='9' height='9' rx='2' fill='%230b99b8'/%3E%3Crect x='18' y='6' width='9' height='9' rx='2' fill='%237c4dff'/%3E%3Crect x='5' y='17' width='9' height='9' rx='2' fill='%23d97706'/%3E%3Crect x='18' y='17' width='9' height='9' rx='2' fill='%230d9467'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link visually-hidden" href="#main-content">Skip to interactive product console</a>
+
+  <!-- ==================== STICKY PRODUCT CONSOLE BAR ==================== -->
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="#overview" aria-label="InfiniteSecurity home">
+        <span class="brand-mark" aria-hidden="true">
+          <i style="background: var(--c-code)"></i>
+          <i style="background: var(--c-ai)"></i>
+          <i style="background: var(--c-web)"></i>
+          <i style="background: var(--c-sign)"></i>
+          <i style="background: var(--c-vault)"></i>
+          <i style="background: var(--c-sla)"></i>
+        </span>
+        <span>InfiniteSecurity</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Interactive product labs">
+        <a href="#overview">How It Works</a>
+        <a href="#pr-gate">01 · PR &amp; OSS Gate</a>
+        <a href="#architecture-map">02 · 6-Lane Path Map</a>
+        <a href="#signing-desk">03 · Hardware Signer Check</a>
+        <a href="#airlock-sdk">04 · AI Airlock &amp; SDK</a>
+        <a href="./incidents.html" class="nav-cta-link">Incident Prevention Dossier →</a>
+      </nav>
+
+      <div class="head-tools">
+        <span class="pill pill-ship">0 Private Keys Held</span>
+        <button type="button" class="btn ghost sm" id="open-glossary-btn">? Glossary</button>
+        <button type="button" class="btn ghost sm" id="open-audit-btn">SHA-256 Audit Log (<span id="audit-count" class="tnum">0</span>)</button>
+        <button type="button" class="btn ghost sm" id="theme-toggle-btn" aria-label="Switch color theme">
+          <span id="theme-toggle-label">Dark theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="wrap">
+
+    <!-- ==================== HERO: UNDERSTAND THE PRODUCT IN 20 SECONDS ==================== -->
+    <section id="overview" class="sec hero-sec">
+      <div class="sec-head" style="max-width: 88ch;">
+        <span class="eyebrow">INFINITESECURITY · LIVE INTERACTIVE PRODUCT CONSOLE</span>
+        <h1 style="margin-top: 6px;">
+          Block hidden paths to customer funds in every pull request — and decode every
+          <span class="ink-run">hardware signature</span> before keys sign.
+        </h1>
+        <p style="font-size: 1.08rem; margin-top: 8px;">
+          <strong>The problem in one sentence:</strong> Smart-contract audits only check Solidity files, cloud scanners only check AWS roles, and hardware wallets only sign raw hex — so nobody catches when a routine change in an AI bot, cloud role, or web script chains together to reach your vault.
+        </p>
+        <p style="font-size: 1.04rem;">
+          <strong>What InfiniteSecurity does:</strong> It plugs read-only into GitHub, AWS/GCP, wallet policies, and EVM/SVM nodes — simulating every change inside a safe Digital Twin before merge and verifying unsigned transactions on a separate screen before executives touch a hardware key (<strong>Unilateral Key Access: None</strong>).
+        </p>
+      </div>
+
+      <!-- 3-Box Concrete Pipeline: Input -> Engine -> Output -->
+      <div class="how-3-grid" aria-label="How InfiniteSecurity works in three steps">
+        <article class="how-card" style="--hc: var(--c-code)">
+          <div class="step-kicker">
+            <span>STEP 01 · EVERY CODE OR POLICY PR</span>
+            <span>INPUT</span>
+          </div>
+          <h3>Reads Git, IAM, AI &amp; Wallet Configs</h3>
+          <p>Triggered automatically on every pull request or treasury transaction — zero agents installed on signing hardware.</p>
+          <pre class="mini-code"># Watched automatically on PR open:
+agents/support_bot.yaml    # AI tool permissions
+terraform/iam_roles.tf     # AWS/GCP role graph
+web/portal/index.html      # Signer UI script hashes
+policies/warm_sweep.yaml   # Custody spend rules</pre>
+        </article>
+
+        <article class="how-card" style="--hc: var(--c-ai)">
+          <div class="step-kicker">
+            <span>STEP 02 · 42-SEC DIGITAL TWIN</span>
+            <span>SIMULATION</span>
+          </div>
+          <h3>Tests Cross-System Paths &amp; 12 Withdrawals</h3>
+          <p>Skips unchanged subsystems in 0s via SHA-256 fingerprints, traces paths to vault admin, and replays 12 customer withdrawal flows.</p>
+          <pre class="mini-code">$ infinitesec check --pr 1842 --verify-sla
+[0.1s] Cache: 4/6 lanes unchanged (0.0s)
+[1.4s] Path: Ticket -> Bot -> IAM -> Portal -> Safe!
+[2.8s] SLA:  12/12 customer withdrawals PASS
+[3.1s] Out:  RESTRICT (2-line patch synthesized)</pre>
+        </article>
+
+        <article class="how-card" style="--hc: var(--c-sla)">
+          <div class="step-kicker">
+            <span>STEP 03 · AUTO-PATCH &amp; SIGNER SHIELD</span>
+            <span>OUTPUT</span>
+          </div>
+          <h3>Posts Exact Code Fix + Decodes Signer Hex</h3>
+          <p>Writes a one-click <code>git diff</code> patch directly on the PR and shows human signers true contract storage changes out-of-band.</p>
+          <pre class="mini-code">// Independent Pre-Signing Check (0 Keys Held):
+Browser UI claim: "Send 250,000 USDC"
+Decoded Calldata: Safe.execTransaction(op=1)
+❌ BLOCK: DELEGATECALL overwrites Vault slot[0]!</pre>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== LAB 01: LIVE GITHUB PR GATE, CODE DIFF & CLI RUNNER ==================== -->
+    <section id="pr-gate" class="sec">
+      <div class="sec-head">
+        <span class="eyebrow" style="color: var(--c-code)">LAB 01 · PRE-DEPLOYMENT CI/CD GATE (GITHUB / GITLAB APP)</span>
+        <h2>01. Inspect Real Pull Requests, Outdated OSS Dependencies &amp; Auto-Generated Patches</h2>
+        <p>
+          Click any of the <strong>five realistic pull requests</strong> below (including outdated third-party open-source crypto/YAML dependencies reachable from custody signing). Inspect the actual files inline or click <strong>Pop-Up Code &amp; Issues</strong> for a focused breakdown, watch <code>infinitesec check</code> run, and apply the exact code fix live.
+        </p>
+      </div>
+
+      <!-- 4 PR Tabs -->
+      <div class="scenario-cards" role="tablist" aria-label="Pull request scenarios" id="pr-scenario-tabs"></div>
+
+      <!-- Plain-English Bridge Banner for Selected PR -->
+      <div class="plain-banner" id="pr-plain-banner"></div>
+
+      <!-- Split IDE + Live CLI / GitHub Check -->
+      <div class="pr-split">
+        <!-- Left: Multi-File Dark IDE Viewer -->
+        <div class="ide-window">
+          <div class="ide-topbar">
+            <div class="win-dots" aria-hidden="true">
+              <i style="background:#ff5f56"></i>
+              <i style="background:#ffbd2e"></i>
+              <i style="background:#27c93f"></i>
+            </div>
+            <div class="ide-tabs" role="tablist" aria-label="Pull request files" id="ide-file-tabs"></div>
+            <div style="display:flex; gap:6px; align-items:center;">
+              <button type="button" class="copy-button" id="open-pr-code-modal-btn" aria-label="Open code and security issues pop-up panel">Pop-Up Code &amp; Issues ↗</button>
+              <span class="copy">
+                <button type="button" class="copy-button" command="--copy" commandfor="ide-code-raw" aria-label="Copy current file code">Copy file</button>
+                <span class="tip" role="status"></span>
+              </span>
+            </div>
+          </div>
+          <div class="ide-explain-strip" id="ide-file-explain"></div>
+          <div class="code-scroll" id="ide-code-lines" tabindex="0" role="region" aria-label="Source code diff viewer"></div>
+          <pre id="ide-code-raw" class="visually-hidden"></pre>
+        </div>
+
+        <!-- Right: Streaming CLI Terminal + GitHub PR Merge Box -->
+        <div class="ci-stack">
+          <div class="term-box">
+            <div class="ide-topbar">
+              <span style="font: 700 11.5px/1 var(--mono); color:#93c5fd;">RUNNER · infinitesec-cli v2.4.0 (read-only twin)</span>
+              <button type="button" class="copy-button" id="rerun-cli-btn">↻ Re-run check</button>
+            </div>
+            <div class="term-body" id="cli-log-output" aria-live="polite"></div>
+          </div>
+
+          <div class="gh-check-card restrict" id="gh-merge-box" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== LAB 02: 6-LANE PATH-TO-FUNDS GRAPH + LIVE NODE CODE ==================== -->
+    <section id="architecture-map" class="sec">
+      <div class="sec-head">
+        <span class="eyebrow" style="color: var(--c-vault)">LAB 02 · CROSS-SYSTEM DEPENDENCY &amp; ATTACK-PATH GRAPH</span>
+        <h2>02. Trace How Code, AI, Web &amp; Cloud Permissions Chain Toward Vault Funds</h2>
+        <p>
+          Every box below is a real component in your custody stack across six vertical lanes. <strong>Dashed red arrows</strong> show open multi-step paths where an untrusted input on the left can hop into <strong>Master Vault Admin</strong> in Lane 5. Toggle any guardrail checkbox — or click <strong>any of the 18 boxes</strong> — to inspect the exact code policy enforcing that boundary.
+        </p>
+      </div>
+
+      <!-- Guardrail Checkboxes -->
+      <div class="control-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+          <span class="eyebrow">LIVE GUARDRAIL CONTROLS (SYNCED WITH PULL REQUEST PATCHES ABOVE)</span>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="pill pill-restrict" id="tree-shortcut-badge">2 Attack Hops Open</span>
+            <span class="pill pill-ship">Customer Withdrawals: 12/12 Live</span>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(195px, 1fr)); gap:10px;" id="tree-toggles">
+          <label style="display:flex; gap:9px; align-items:flex-start; padding:10px 12px; border-radius:var(--r-md); background:var(--surface-2); border:1px solid var(--line); cursor:pointer;">
+            <input type="checkbox" data-cut="fence_ai" style="margin-top:3px;">
+            <span>
+              <strong style="display:block; font-size:0.9rem;">1. StateFence + Read-Only Bot IAM</strong>
+              <span class="muted" style="font-size:0.8rem;">Cuts <code>Ticket → Bot → IAM → Portal</code> (PR #1842)</span>
+            </span>
+          </label>
+          <label style="display:flex; gap:9px; align-items:flex-start; padding:10px 12px; border-radius:var(--r-md); background:var(--surface-2); border:1px solid var(--line); cursor:pointer;">
+            <input type="checkbox" data-cut="pin_web" style="margin-top:3px;">
+            <span>
+              <strong style="display:block; font-size:0.9rem;">2. Pin UI Script SHA-384 Hashes</strong>
+              <span class="muted" style="font-size:0.8rem;">Cuts <code>3rd-Party CDN → Signer Portal</code> (PR #1845)</span>
+            </span>
+          </label>
+          <label style="display:flex; gap:9px; align-items:flex-start; padding:10px 12px; border-radius:var(--r-md); background:var(--surface-2); border:1px solid var(--line); cursor:pointer;">
+            <input type="checkbox" data-cut="oob_desk" checked style="margin-top:3px;">
+            <span>
+              <strong style="display:block; font-size:0.9rem;">3. Out-of-Band Bytecode Verifier</strong>
+              <span class="muted" style="font-size:0.8rem;">Blocks disguised <code>DELEGATECALL</code> vault owner swaps</span>
+            </span>
+          </label>
+          <label style="display:flex; gap:9px; align-items:flex-start; padding:10px 12px; border-radius:var(--r-md); background:var(--surface-2); border:1px solid var(--line); cursor:pointer;">
+            <input type="checkbox" data-cut="fresh_oracle" checked style="margin-top:3px;">
+            <span>
+              <strong style="display:block; font-size:0.9rem;">4. 24h Custodian Reserve Clock</strong>
+              <span class="muted" style="font-size:0.8rem;">Holds unattended mints when bank feed is stale (PR #1843)</span>
+            </span>
+          </label>
+          <label style="display:flex; gap:9px; align-items:flex-start; padding:10px 12px; border-radius:var(--r-md); background:var(--surface-2); border:1px solid var(--line); cursor:pointer;">
+            <input type="checkbox" data-cut="sbom_pin" style="margin-top:3px;">
+            <span>
+              <strong style="display:block; font-size:0.9rem;">5. OSS Crypto &amp; SBOM Reachability Pin</strong>
+              <span class="muted" style="font-size:0.8rem;">Blocks outdated EdDSA/YAML packages on signing paths (PR #1849)</span>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 6-Lane SVG + Clear Legend -->
+      <div class="tree-frame" role="region" aria-label="Six-lane path-to-funds architecture graph">
+        <div class="tree-legend">
+          <strong>Map Legend:</strong>
+          <span><strong style="color:var(--c-sla)">━━━▶ Green Solid:</strong> Verified customer withdrawal &amp; settlement flows (12/12)</span>
+          <span><strong style="color:var(--danger)">╌╌╌▶ Red Dashed:</strong> Active multi-step shortcut toward Vault Admin</span>
+          <span><strong style="color:var(--ink-3)">┄┄┄ Gray Faded:</strong> Shortcut severed by guardrail</span>
+          <span><strong>Click any of the 18 boxes</strong> to open the interactive Code &amp; Issues pop-up panel ↗</span>
+        </div>
+        <svg id="six-lane-svg" viewBox="0 0 1140 490" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+
+      <!-- Node Plain-English + Live Code Snippet Inspector -->
+      <div class="node-inspector-split" id="node-inspector" aria-live="polite"></div>
+    </section>
+
+    <!-- ==================== LAB 03: 3-SCREEN HARDWARE PRE-SIGNING VERIFICATION DESK ==================== -->
+    <section id="signing-desk" class="sec">
+      <div class="sec-head">
+        <span class="eyebrow" style="color: var(--c-sign)">LAB 03 · OUT-OF-BAND PRE-SIGNING VERIFICATION DESK (0 PRIVATE KEYS HELD)</span>
+        <h2>03. See What the Browser Shows, What the Hardware Key Shows &amp; What InfiniteSecurity Decodes</h2>
+        <p>
+          Hardware wallets and MPC signers keep private keys safe, yet executives still get tricked when a compromised web portal displays <em>"Routine $250k USDC transfer"</em> while feeding a disguised <code>DELEGATECALL</code> ownership swap to the USB signer. Compare all three real screens side-by-side across four unsigned transactions below.
+        </p>
+      </div>
+
+      <!-- 4 Transaction Tabs -->
+      <div class="scenario-cards" role="tablist" aria-label="Unsigned transaction scenarios" id="signing-vector-list"></div>
+
+      <!-- 3-Screen Realistic Comparison: Browser Window | Physical Hardware Key | InfiniteSecurity Decoder -->
+      <div class="signing-3-grid" id="signing-3-screens" aria-live="polite"></div>
+    </section>
+
+    <!-- ==================== LAB 04: LIVE STATEFENCE AIRLOCK, SENSOR CLOCKS & 5-MIN SDK ==================== -->
+    <section id="airlock-sdk" class="sec">
+      <div class="sec-head">
+        <span class="eyebrow" style="color: var(--c-ai)">LAB 04 · STATEFENCE INPUT QUARANTINE, SENSOR CLOCKS &amp; 5-MINUTE INTEGRATION CODE</span>
+        <h2>04. Test the Prompt Airlock Live &amp; Copy Drop-In Integration Code</h2>
+        <p>
+          Test how <code>StateFence</code> strips hidden prompt-injection commands and collapses duplicate scanner floods before any LLM tool executes — then inspect the exact GitHub Action, Python SDK, TypeScript MCP wrapper, and Solidity guard code used to deploy InfiniteSecurity read-only in under an hour.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <!-- Left: Live StateFence Sandbox + Python Sanitizer Code -->
+        <div class="control-box">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+            <span class="eyebrow" style="color:var(--c-ai)">LIVE STATEFENCE SANDBOX</span>
+            <span class="pill pill-ship">0 Raw Bytes Sent to LLM</span>
+          </div>
+          <h3>Quarantine Untrusted Tickets &amp; Scanner Floods</h3>
+
+          <div class="field">
+            <label for="airlock-preset">Select incoming untrusted payload (or type your own below)</label>
+            <select id="airlock-preset">
+              <option value="0">Zendesk Ticket #8841 — Disguised curl + token export injection</option>
+              <option value="1">5 Overlapping Cloud Scanners — Echoing same container rootfs warning</option>
+              <option value="2">Spoofed Vendor Notice — Request to bypass SRI portal script hash</option>
+              <option value="3">Clean Ops Settlement Log — Normal daily USDC payout summary</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="airlock-input">Raw untrusted input arriving from webhook / email / log</label>
+            <textarea id="airlock-input" rows="3"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="airlock-cap">Token / word cap enforced by schema: <span id="airlock-cap-val" class="mono tnum">30</span> words (max 40)</label>
+            <input type="range" id="airlock-cap" min="15" max="40" value="30">
+          </div>
+
+          <div id="airlock-output-panel"></div>
+        </div>
+
+        <!-- Right: Copyable 5-Minute Integration Code Tabs + Sensor Clock Lab -->
+        <div style="display:grid; gap:14px;">
+          <div class="ide-window">
+            <div class="ide-topbar">
+              <div class="ide-tabs" role="tablist" aria-label="Integration SDK examples" id="sdk-tabs"></div>
+              <span class="copy">
+                <button type="button" class="copy-button" command="--copy" commandfor="sdk-code-pre" aria-label="Copy SDK integration snippet">Copy snippet</button>
+                <span class="tip" role="status"></span>
+              </span>
+            </div>
+            <div class="ide-explain-strip" id="sdk-explain"></div>
+            <pre id="sdk-code-pre" tabindex="0" style="margin:0; padding:12px 14px; font:12.2px/1.56 var(--mono); overflow-x:auto; color:#e6edf8;"></pre>
+          </div>
+
+          <!-- Sensor Heartbeat & 45-Minute Triage Curve -->
+          <div class="control-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+              <span class="eyebrow" style="color:var(--c-sensor)">SENSOR HEARTBEAT CLOCK &amp; 45-MIN TRIAGE BUDGET</span>
+              <span class="pill pill-neutral" id="sensor-state-pill">FRESH (6H &lt; 24H)</span>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px;">
+              <div class="field">
+                <label for="sensor-age-slider">Bank Feed Age: <span id="sensor-age-val" class="mono tnum">6h</span></label>
+                <input type="range" id="sensor-age-slider" min="1" max="96" value="6">
+              </div>
+              <div class="field">
+                <label for="noise-slider">Alert Echoes: <span id="noise-val" class="mono tnum">5x</span></label>
+                <input type="range" id="noise-slider" min="1" max="10" value="5">
+              </div>
+              <div class="field">
+                <label for="budget-slider">Team Budget: <span id="budget-val" class="mono tnum">45m</span></label>
+                <input type="range" id="budget-slider" min="15" max="120" step="5" value="45">
+              </div>
+            </div>
+            <div id="sensor-verdict-banner" class="desk-row"></div>
+            <svg id="sensor-lab-svg" viewBox="0 0 540 210" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;"></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15-Module Product Scope + Existing Tool Integration Table -->
+      <div style="display:grid; gap:12px; margin-top:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+          <div>
+            <span class="eyebrow" style="color:var(--c-card)">FULL 15-MODULE PRODUCT ARCHITECTURE &amp; BENCHMARK PROOF</span>
+            <h3 style="margin-top:2px;">8 Working Engine Modules Today + 7 Enterprise Connectors · Pure USD Annual SaaS</h3>
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button type="button" class="btn sm" data-mod-filter="all">All 15 Modules</button>
+            <button type="button" class="btn ghost sm" data-mod-filter="live">8 Live Modules</button>
+            <button type="button" class="btn ghost sm" data-mod-filter="roadmap">7 Planned Connectors</button>
+          </div>
+        </div>
+        <div class="atlas-lanes" id="atlas-lanes"></div>
+      </div>
+
+      <div tabindex="0" role="region" aria-labelledby="incumbent-table-caption" class="table-wrapper" style="margin-top:6px;">
+        <table class="spec-table">
+          <caption id="incumbent-table-caption">How InfiniteSecurity integrates read-only above your existing security stack (zero rip-and-replace)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Existing Tool</th>
+              <th scope="col">What It Watches Well</th>
+              <th scope="col">Cross-System Blind Spot</th>
+              <th scope="col">How InfiniteSecurity Plugs In Above It</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Smart-Contract Audits</th>
+              <td>Finds Solidity / Rust logic bugs pre-launch.</td>
+              <td>Static point-in-time report; blind to Tuesday's IAM, AI bot, or portal script PR.</td>
+              <td>Loads audit invariants into Lane 5 and verifies daily PRs never create operational bypasses.</td>
+            </tr>
+            <tr>
+              <th scope="row">Cloud &amp; CI Scanners</th>
+              <td>Flags broad IAM roles and package CVEs.</td>
+              <td>Floods queues with hundreds of warnings without knowing which 2 roles reach vault signing.</td>
+              <td>Joins AWS/GCP role graphs with wallet &amp; portal repos to isolate true paths to funds.</td>
+            </tr>
+            <tr>
+              <th scope="row">MPC / Hardware Wallets</th>
+              <td>Protects private key shares inside enclaves/HSMs.</td>
+              <td>Signs whatever raw bytes a tampered web portal feeds human quorum approvers.</td>
+              <td>Decodes raw unsigned calldata &amp; storage diffs out-of-band before keys sign (<code>0 Keys Held</code>).</td>
+            </tr>
+            <tr>
+              <th scope="row">Wallet Policy Engines</th>
+              <td>Enforces transfer caps and whitelists.</td>
+              <td>Assumes policy PRs, recipient KYC registries, and bank reserve feeds are fresh and untampered.</td>
+              <td>Simulates policy edits against 12 withdrawal SLAs and enforces 24h oracle heartbeat clocks.</td>
+            </tr>
+            <tr>
+              <th scope="row">On-Chain Runtime Monitors</th>
+              <td>Detects suspicious mempool / block events live.</td>
+              <td>Reacts after valid hardware keys have already signed an irreversible admin <code>DELEGATECALL</code>.</td>
+              <td>Moves prevention pre-merge &amp; pre-signature, and exports verified pause rules that never brick redemptions.</td>
+            </tr>
+            <tr>
+              <th scope="row">AI Prompt Filters</th>
+              <td>Blocks basic jailbreak keywords in chat text.</td>
+              <td>Raw untrusted tickets still enter tool-calling context and chain across internal APIs.</td>
+              <td>Enforces <code>StateFence</code> (&le;40-word typed JSON facts, <code>0</code> raw untrusted bytes forwarded to tool planners).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-foot">
+    <div class="wrap foot-grid">
+      <div>
+        <strong style="font-family:var(--display); font-size:1.05rem; color:var(--ink);">InfiniteSecurity — Custody Change Assurance &amp; Pre-Signing Verification</strong>
+        <p style="margin-top:6px;">
+          Read-only cross-plane digital twin, automated PR code-patch synthesis, <code>StateFence</code> input quarantine, and independent hardware pre-signing verification.
+        </p>
+      </div>
+      <div>
+        <strong style="font-family:var(--display); color:var(--ink);">Deployment &amp; Trust</strong>
+        <p style="margin-top:6px;">Unilateral Signing Key Access: <strong>None</strong></p>
+        <p>Pilot Motion: <strong>4-Week Read-Only Shadow Pilot</strong></p>
+        <p>Recorded Benchmarks (from bundle): <strong id="footer-benchmarks">Loading recorded fit metrics...</strong></p>
+      </div>
+      <div>
+        <strong style="font-family:var(--display); color:var(--ink);">Jump to Lab</strong>
+        <p style="margin-top:6px;"><a href="#pr-gate">01 · PR &amp; OSS Gate</a> · <a href="#architecture-map">02 · 6-Lane Path Map</a></p>
+        <p><a href="#signing-desk">03 · Hardware Signer Check</a> · <a href="#airlock-sdk">04 · AI Airlock &amp; SDK</a></p>
+        <p><a href="./incidents.html"><strong>Incident Prevention Dossier →</strong></a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== CODE & ISSUES INSPECTOR POP-UP DIALOG ==================== -->
+  <dialog id="code-inspector-modal" closedby="any" aria-labelledby="code-modal-title">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;">
+      <div>
+        <span class="eyebrow" id="code-modal-eyebrow">CODE &amp; SECURITY ISSUES INSPECTOR</span>
+        <h2 id="code-modal-title" style="font-size:1.38rem; margin-top:2px;">Component Inspection</h2>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <span class="pill pill-restrict" id="code-modal-status-pill">STATUS</span>
+        <form method="dialog">
+          <button type="submit" class="btn ghost sm">Close (Esc)</button>
+        </form>
+      </div>
+    </div>
+    <p id="code-modal-summary" class="muted" style="margin-top:6px; font-size:0.93rem;"></p>
+    <div class="code-modal-body" id="code-modal-body"></div>
+  </dialog>
+
+  <!-- ==================== GLOSSARY DIALOG ==================== -->
+  <dialog id="glossary-modal" closedby="any" aria-labelledby="glossary-title">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+      <div>
+        <span class="eyebrow">PLAIN-ENGLISH &amp; TECHNICAL REFERENCE</span>
+        <h2 id="glossary-title" style="font-size:1.38rem;">Key Terms Explained Clearly</h2>
+      </div>
+      <form method="dialog">
+        <button type="submit" class="btn ghost sm">Close (Esc)</button>
+      </form>
+    </div>
+    <div class="field" style="margin-top:10px;">
+      <label for="glossary-search" class="visually-hidden">Search glossary</label>
+      <input type="text" id="glossary-search" placeholder="Filter terms (e.g., DELEGATECALL, StateFence, SRI, Digital Twin)...">
+    </div>
+    <div class="glossary-grid" id="glossary-list"></div>
+  </dialog>
+
+  <!-- ==================== SHA-256 AUDIT LEDGER DIALOG ==================== -->
+  <dialog id="audit-modal" closedby="any" aria-labelledby="audit-title">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+      <div>
+        <span class="eyebrow">WEB CRYPTO SHA-256 CHAINED RECEIPTS</span>
+        <h2 id="audit-title" style="font-size:1.38rem;">Live Session Audit Ledger</h2>
+      </div>
+      <form method="dialog">
+        <button type="submit" class="btn ghost sm">Close (Esc)</button>
+      </form>
+    </div>
+    <p class="muted" style="margin-top:6px; font-size:0.9rem;">
+      Every PR check, applied patch, guardrail toggle, and pre-signing simulation in this console generates a chained <code>SHA-256</code> receipt.
+    </p>
+    <div id="audit-entries" style="display:grid; gap:8px; max-height:min(430px, 60vh); overflow-y:auto; margin-top:12px;"></div>
+  </dialog>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
